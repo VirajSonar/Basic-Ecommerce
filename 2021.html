@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>login </title>
+    <link rel="stylesheet" href="2021.css">
+    </head>
+    <body>
+        <div class="container">
+        <div class="content">
+            <a href="2021home.html" target="detail"><p>Home</p></a>
+            <a href="2021product.html" target="detail"><p>Product</p></a>
+            <a href="#signup"><p>Sign Up</p></a>
+            <a href="#footer"><p>About Us</p></a>
+        </div>
+            
+        <div class="frame" style="overflow: hidden">
+        <iframe src="2021home.html" name="detail" id="detail"></iframe>  
+        </div>
+        
+<div id="signup">
+    <img class="abc" src="hny.jpg" alt="">
+    <div class="login">
+    <form onsubmit="return validate()" method="post">
+        <div class="log">
+        <button class="b1 button" onclick="login">Login</button>
+        <button class="b2 button">Sign Up</button>
+        </div><br><br>
+        
+            <div class="pos">
+                <input type="text" placeholder="Enter Username" name="num" id="num" required>
+            <br><br>
+            <input type="password" placeholder="Password" name="num1" id="num1" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                <br><br>
+                <input type="password" placeholder="Repeat Password" name="num2" id="num2" required title="">
+            </div>
+    <br><br>
+    <div class="submit">
+    <button class="b3" value="submit">Submit</button><br>
+    <a href="2021.html"><p>Forget password?</p></a>
+    </div>          
+    </form>
+    </div>
+</div><br> <br>
+        <hr color="#f25915">
+        <div id="footer">
+        <div class="follow">
+            <p>Follow us On</p>
+            
+            </div>
+        
+        
+        
+        </div>
+        <script src="2021.js"></script>
+        </div>
+    </body>
+</html>

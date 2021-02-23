@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            background:  #1d2121;
+            color: #d2691e;
+            font-family: sans-serif;
+            text-align: center;
+        }
+        #basket{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+        #itemcounter{    
+            position: absolute;
+            right: 80px;
+            top: 20px;   
+        }
+        #ordertotal{
+            margin-right: 20px;
+            text-align: right;
+        }
+        .main{
+           margin: 0px auto;
+            width: auto;
+            height: auto;
+            text-align: center;
+        }
+        .product{
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            
+            width: 300px;
+            height: 500px;
+            border: 1px solid none;
+            border-radius: 20px;
+            background-color: blue;
+            margin: 0px auto;
+           
+       }
+        .mobile{
+            width: auto;
+            height: 300px;
+             font-size: 50px;
+            text-align: center;
+            align-content: center;
+            align-items: center;
+            font-family: fantasy;
+        }
+        .price{
+            width: auto;
+            height: 70px;
+            padding: 10px;
+            margin-bottom: -1px;
+            background-color: #39322c;
+            font-size: 50px;
+            align-content: flex-end;
+            align-items: baseline;
+            text-align: center;
+            font-family: fantasy;
+            color: aliceblue;
+        }
+        .cart{
+            width: inherit;
+            height: 65px;
+           margin: 0 auto;
+            background-color: #000000;
+            color: aliceblue;
+            font-size: 30px;
+            border: none;
+        }
+        .btn{
+            margin-top: 30px;
+            margin-right: 5px;
+            width: 100px;
+            height: 50px;
+            border: none;
+            border-radius: 10px;
+            background-color:chocolate;
+            color: aliceblue;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+    
+    
+    </style>
+</head>
+    <body>
+    <h1>Product</h1>
+        <img src="cart.png" onclick="clickcart()" id="basket">
+        <h2 id="itemcounter">0</h2>
+        <p id="ordertotal"></p>
+        <h2>Explore our product</h2><br>
+        <div class="main">
+            <div class="product" id="prodoct">
+            <p class="mobile" id="mobile">Apple</p>
+            <p class="price" id="price">$999</p>
+            <button class="cart" onclick="addToCart()">Add to Cart</button>        
+            </div>
+            <button class="btn" onclick="prev()">Prev</button>
+            <button class="btn" onclick="next()">Next</button>
+        </div>
+    
+    
+    <script>
+        var xyz=[{name:"Apple",price:999,color:"blue"},{name:"Oppo",price:699,color:"red"},{name:"Oneplus",price:599,color:"green"},{name:"Vivo",price:499,color:"pink"},{name:"Sumsung",price:899,color:"yellow"},{name:"Asus",price:549,color:"cyan"}];
+        var num=0;
+        var cartItems=[];
+        var isTotalHidden=true;
+        
+        // add to cart function
+       function addToCart(){
+            cartItems.push(xyz[num].price);
+            document.getElementById("itemcounter").innerHTML=cartItems.length;
+           showTotal();
+        }
+        //When click on basket image show/hide total
+        function clickcart(){
+            isTotalHidden=!isTotalHidden;
+            showTotal();
+        }
+        
+        function showTotal(){
+            var orderTotal=document.getElementById("ordertotal");
+            orderTotal.innerHTML="";
+            
+            if(isTotalHidden===false){
+                var total=0;//if  nothing added to  cart than total is 0
+                for(var i=0;i<cartItems.length;i++){
+                    total+=cartItems[i];//cartItem[i].price 
+                }
+                orderTotal.innerHTML+="Total: $"+total;
+            }
+        }
+        
+        //previous button function
+        function prev(){
+            let a=document.getElementById("mobile");
+            let b=document.getElementById("price");
+            let c=document.getElementById("prodoct");
+            num--;
+            if(num < 0){
+                num=xyz.length-1;
+            }
+            a.innerHTML=xyz[num].name;
+            b.innerHTML="$"+xyz[num].price;
+            c.style.backgroundColor=xyz[num].color;
+        }
+        //Next button function
+        function next(){
+            let a=document.getElementById("mobile");
+            let b=document.getElementById("price");
+             let c=document.getElementById("prodoct");
+            num++;
+            if(num >= xyz.length){
+                num=0;
+            }
+            a.innerHTML=xyz[num].name;
+            b.innerHTML="$"+xyz[num].price;
+            c.style.backgroundColor=xyz[num].color;
+        }
+         
+        
+        </script>
+    </body>
+</html>
